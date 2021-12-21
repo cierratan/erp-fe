@@ -27,6 +27,7 @@ const StyledDiv = styled.div`
     .menuCard {
       height: 200px;
       width: 100%;
+      background-color: #1990ff;
     }
 
     .disabled {

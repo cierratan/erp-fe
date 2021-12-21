@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Button, Space, Select, Form, Input } from 'antd';
+import { Table, Button, Space, Select, Form, Input, message } from 'antd';
 import { useHistory } from 'react-router-dom';
 
 import { StyledDiv } from './styled';
+import env from '../../env';
 
 function StockLocation() {
   const history = useHistory();
@@ -22,6 +23,9 @@ function StockLocation() {
   useEffect(() => {
     let data = getCountries();
     data.then(result => {
+      if (result.status && result.status !== 200 || result.status !== 201) {
+        message.error(result.error);
+      }
       setCountries(result);
       optionCountries = getOptionCountries(countries);
     });
@@ -31,6 +35,9 @@ function StockLocation() {
     setLoading(true);
     let data = getItems(filterSearch);
     data.then(result => {
+      if (result.status && result.status !== 200 || result.status !== 201) {
+        message.error(result.error);
+      }
       const myData = result.rows;
       result.rows.forEach((element, index) => {
         myData[index]["key"] = index;
@@ -146,12 +153,14 @@ function StockLocation() {
         <Column
           title="Action"
           key="action"
-          render={ (text, record) => (
-            <Space size="middle">
-              <a>View</a>
-              <a>Edit</a>
-            </Space>
-          ) }
+          render={ (text, record) => {
+            return (
+              <Space size="middle">
+                <a onClick={ () => history.push(`/stock-locations/${ record.loc }`) }>View</a>
+                <a onClick={ () => history.push(`/stock-locations/${ record.loc }?edit=true`) }>Edit</a>
+              </Space>
+            );
+          } }
         />
       </Table>
     </StyledDiv>
@@ -164,7 +173,7 @@ async function getCountries() {
 }
 
 async function getItems(filterSearch) {
-  return await fetch("http://sun17.sunright.com/companies/JX/plants/12/locations/search",
+  return await fetch(`http://sun17.sunright.com/companies/${ env.companyCode }/plants/${ env.plantNo }/locations/search`,
     {
       method: 'POST',
       headers: {
@@ -172,7 +181,11 @@ async function getItems(filterSearch) {
       },
       body: JSON.stringify(filterSearch),
     })
-    .then(res => res.json());
+    .then(res => res.json())
+    .catch(err => {
+      console.log('err :>> ', err);
+      message.error(JSON.stringify(err));
+    });
 }
 
 function getOptionCountries(countries) {

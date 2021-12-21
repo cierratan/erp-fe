@@ -12,6 +12,7 @@ const StyledDiv = styled.div`
 
     h2 {
       font-size: 30px;
+      color: darkblue;
     }
 
     .right {
@@ -31,11 +32,42 @@ const StyledDiv = styled.div`
     justify-content: center;
     width: 100%;
 
+    .loading {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      jsutify-content: center;
+
+      img {
+        width: 100px;
+      }
+    }
+
     form {
       width: 80%;
     }
     .group {
       margin-bottom: 60px;
+    }
+
+    .ant-input[disabled] {
+      color: rgba(0, 0, 0, 0.85);
+      background-color: transparent;
+      border: unset;
+      box-shadow: none;
+      /* cursor: not-allowed; */
+      opacity: 1;
+      border-bottom: 1px solid black;
+    }
+
+    .ant-select-disabled.ant-select:not(.ant-select-customize-input)
+      .ant-select-selector {
+      color: rgba(0, 0, 0, 0.85);
+      background: transparent;
+      border: unset;
+      box-shadow: none;
+      border-bottom: 1px solid black;
+      /* cursor: not-allowed; */
     }
   }
 

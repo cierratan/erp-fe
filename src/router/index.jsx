@@ -53,6 +53,10 @@ const publicRoutes = [
     path: '/stock-locations/create',
     component: StockLocationForm,
   },
+  {
+    path: '/stock-locations/:id',
+    component: StockLocationForm,
+  },
 
 ];
 
@@ -67,7 +71,7 @@ const privateRoutes = [
 const Router = props => {
   const history = useHistory();
   const [userName, setUserName] = useState('username');
-  const [company, setCompany] = useState('company name');
+  const [company, setCompany] = useState('company_name');
   const [loginDate, setLoginDate] = useState(moment().format("YYYY-MM-DD HH:mm:ss"));
   // const dispatch = useDispatch();
 
@@ -82,11 +86,11 @@ const Router = props => {
         {
           <div className="userInfo">
             <div className="left">
-              <p className="username">Username: { userName }</p>
-              <p className="company">Company: { company }</p>
+              <p className="username">Username: <span>{ userName }</span></p>
+              <p className="company">Company: <span>{ company }</span></p>
             </div>
             <div className="right">
-              <p className="login">Login Date: { loginDate }</p>
+              <p className="login">Login Date: <span>{ loginDate }</span></p>
             </div>
           </div>
         }

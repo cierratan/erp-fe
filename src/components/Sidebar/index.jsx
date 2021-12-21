@@ -153,8 +153,7 @@ function Sidebar() {
     if (
       menu === 'inventory' ||
       history.location.pathname === '/items' ||
-      history.location.pathname === '/stock-locations' ||
-      history.location.pathname === '/stock-locations/create'
+      history.location.pathname.includes('/stock-locations')
     ) {
       setSelectedMenu(itemMenu);
     }
@@ -246,7 +245,7 @@ function Sidebar() {
         <ProSidebar
           width={ '270px' }
           collapsedWidth={ '80px' }
-          collapsed={ false }
+          collapsed={ selectedMenu.length === 0 }
         >
           <SidebarHeader>
             {/**

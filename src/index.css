@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 body {
   margin: 0;
@@ -9,6 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Montserrat', sans-serif;
 }
 
 code {
@@ -89,7 +91,7 @@ table {
 }
 
 .pro-sidebar-header {
-  height: 80px;
+  height: 100px;
 }
 
 .pro-sidebar-layout {
@@ -198,6 +200,7 @@ table {
 
 .sidebar-title img {
   cursor: pointer;
+  margin-top: 14px;
   margin-left: -4px;
   width: auto;
   max-height: 70px;
@@ -211,8 +214,16 @@ table {
 }
 
 .userInfo {
-  /* margin-bottom: 40px; */
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
-  /* border-bottom: 1px dashed; */
+  border-bottom: 1px dashed;
+  padding-bottom: 10px;
+  font-size: 14px;
+}
+
+.userInfo span {
+  font-weight: 700;
+  font-size: 20px;
+  color: darkblue;
 }
