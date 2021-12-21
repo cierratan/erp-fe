@@ -12,9 +12,9 @@ Stack Technology :
 
 ## Get Started
 
-1. Clone the repo.
+1. Run command `git clone git@bitbucket.org:sunright-workspace/erp-fe.git` to clone the repo. 
 2. Run command `docker build -t sunright-erp .` to build image.
 3. Run command `docker run -d -p 3000:80 --name sunright-erp sunright-erp` to run application as daemond.
-4. Open browser and type address `http://localhost:3000`
+4. Open browser and type address `http://localhost:3000`.
 
 ---
