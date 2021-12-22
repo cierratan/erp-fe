@@ -307,7 +307,7 @@ const StockLocationForm = (props) => {
               </div>
 
               {
-                !id || isEdit &&
+                (!id || isEdit) &&
                 <div className="submit">
                   <Form.Item>
                     <Button onClick={ submit } type="primary" htmlType="submit">
